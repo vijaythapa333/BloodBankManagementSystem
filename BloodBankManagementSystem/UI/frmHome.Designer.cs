@@ -33,13 +33,13 @@
             this.usersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.donorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelFooter = new System.Windows.Forms.Panel();
-            this.lblAppName = new System.Windows.Forms.Label();
-            this.lblDevTitle = new System.Windows.Forms.Label();
             this.lblDeveloper = new System.Windows.Forms.Label();
+            this.lblDevTitle = new System.Windows.Forms.Label();
+            this.lblAppName = new System.Windows.Forms.Label();
             this.panelOpositive = new System.Windows.Forms.Panel();
-            this.lblBloodGroup = new System.Windows.Forms.Label();
-            this.lblOpositiveCount = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
+            this.lblOpositiveCount = new System.Windows.Forms.Label();
+            this.lblBloodGroup = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblOnegativeCount = new System.Windows.Forms.Label();
@@ -104,6 +104,7 @@
             this.usersToolStripMenuItem.Name = "usersToolStripMenuItem";
             this.usersToolStripMenuItem.Size = new System.Drawing.Size(53, 21);
             this.usersToolStripMenuItem.Text = "Users";
+            this.usersToolStripMenuItem.Click += new System.EventHandler(this.usersToolStripMenuItem_Click);
             // 
             // donorsToolStripMenuItem
             // 
@@ -123,16 +124,16 @@
             this.panelFooter.Size = new System.Drawing.Size(1135, 41);
             this.panelFooter.TabIndex = 1;
             // 
-            // lblAppName
+            // lblDeveloper
             // 
-            this.lblAppName.AutoSize = true;
-            this.lblAppName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(76)))), ((int)(((byte)(58)))));
-            this.lblAppName.Location = new System.Drawing.Point(214, 5);
-            this.lblAppName.Name = "lblAppName";
-            this.lblAppName.Size = new System.Drawing.Size(319, 30);
-            this.lblAppName.TabIndex = 0;
-            this.lblAppName.Text = "Blood Bank Management System";
+            this.lblDeveloper.AutoSize = true;
+            this.lblDeveloper.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeveloper.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblDeveloper.Location = new System.Drawing.Point(693, 5);
+            this.lblDeveloper.Name = "lblDeveloper";
+            this.lblDeveloper.Size = new System.Drawing.Size(144, 30);
+            this.lblDeveloper.TabIndex = 2;
+            this.lblDeveloper.Text = "VIJAY THAPA";
             // 
             // lblDevTitle
             // 
@@ -145,16 +146,16 @@
             this.lblDevTitle.TabIndex = 1;
             this.lblDevTitle.Text = "Developed By - ";
             // 
-            // lblDeveloper
+            // lblAppName
             // 
-            this.lblDeveloper.AutoSize = true;
-            this.lblDeveloper.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeveloper.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblDeveloper.Location = new System.Drawing.Point(693, 5);
-            this.lblDeveloper.Name = "lblDeveloper";
-            this.lblDeveloper.Size = new System.Drawing.Size(144, 30);
-            this.lblDeveloper.TabIndex = 2;
-            this.lblDeveloper.Text = "VIJAY THAPA";
+            this.lblAppName.AutoSize = true;
+            this.lblAppName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(76)))), ((int)(((byte)(58)))));
+            this.lblAppName.Location = new System.Drawing.Point(214, 5);
+            this.lblAppName.Name = "lblAppName";
+            this.lblAppName.Size = new System.Drawing.Size(319, 30);
+            this.lblAppName.TabIndex = 0;
+            this.lblAppName.Text = "Blood Bank Management System";
             // 
             // panelOpositive
             // 
@@ -167,16 +168,15 @@
             this.panelOpositive.Size = new System.Drawing.Size(200, 100);
             this.panelOpositive.TabIndex = 2;
             // 
-            // lblBloodGroup
+            // lblName
             // 
-            this.lblBloodGroup.AutoSize = true;
-            this.lblBloodGroup.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBloodGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(76)))), ((int)(((byte)(58)))));
-            this.lblBloodGroup.Location = new System.Drawing.Point(3, 15);
-            this.lblBloodGroup.Name = "lblBloodGroup";
-            this.lblBloodGroup.Size = new System.Drawing.Size(98, 65);
-            this.lblBloodGroup.TabIndex = 0;
-            this.lblBloodGroup.Text = "O+";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(113, 59);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(60, 21);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "Donors";
             // 
             // lblOpositiveCount
             // 
@@ -189,15 +189,16 @@
             this.lblOpositiveCount.TabIndex = 1;
             this.lblOpositiveCount.Text = "100";
             // 
-            // lblName
+            // lblBloodGroup
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(113, 59);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(60, 21);
-            this.lblName.TabIndex = 2;
-            this.lblName.Text = "Donors";
+            this.lblBloodGroup.AutoSize = true;
+            this.lblBloodGroup.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBloodGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(76)))), ((int)(((byte)(58)))));
+            this.lblBloodGroup.Location = new System.Drawing.Point(3, 15);
+            this.lblBloodGroup.Name = "lblBloodGroup";
+            this.lblBloodGroup.Size = new System.Drawing.Size(98, 65);
+            this.lblBloodGroup.TabIndex = 0;
+            this.lblBloodGroup.Text = "O+";
             // 
             // panel1
             // 

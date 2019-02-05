@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BloodBankManagementSystem.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,13 @@ namespace BloodBankManagementSystem
         {
             //Code to Close this Application
             this.Hide();
+        }
+
+        private void usersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Open Users Form
+            frmUsers users = new frmUsers();
+            users.Show();
         }
     }
 }
