@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace BloodBankManagementSystem
 {
-    public partial class Form1 : Form
+    public partial class frmHome : Form
     {
-        public Form1()
+        public frmHome()
         {
             InitializeComponent();
+        }
+
+        private void pictureBoxClose_Click(object sender, EventArgs e)
+        {
+            //Code to Close this Application
+            this.Hide();
         }
     }
 }
