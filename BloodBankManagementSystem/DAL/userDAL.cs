@@ -20,7 +20,7 @@ namespace BloodBankManagementSystem.DAL
         public DataTable Select()
         {
             //Create an Object to connect database
-            SqlConnection conn = new SqlConnection();
+            SqlConnection conn = new SqlConnection(myconnstrng);
 
             //Create a DataTable to Hold the Data from Database
             DataTable dt = new DataTable();
@@ -64,7 +64,7 @@ namespace BloodBankManagementSystem.DAL
             bool isSuccess = false;
 
             //Create an Object of SqlConnection to connect Database
-            SqlConnection conn = new SqlConnection();
+            SqlConnection conn = new SqlConnection(myconnstrng);
 
             try
             {
@@ -126,7 +126,7 @@ namespace BloodBankManagementSystem.DAL
             bool isSuccess = false;
 
             //Create an Object for Database Connection
-            SqlConnection conn = new SqlConnection();
+            SqlConnection conn = new SqlConnection(myconnstrng);
 
             try
             {
@@ -146,6 +146,9 @@ namespace BloodBankManagementSystem.DAL
                 cmd.Parameters.AddWithValue("@added_date", u.added_date);
                 cmd.Parameters.AddWithValue("@image_name", u.image_name);
                 cmd.Parameters.AddWithValue("@user_id", u.user_id);
+
+                //open Database Connection
+                conn.Open();
 
                 //Create an integer variable to hold the value after the query is executed
                 int rows = cmd.ExecuteNonQuery();
@@ -187,18 +190,21 @@ namespace BloodBankManagementSystem.DAL
             bool isSuccess = false;
 
             //Create an object for SqlConnection
-            SqlConnection conn = new SqlConnection();
+            SqlConnection conn = new SqlConnection(myconnstrng);
 
             try
             {
                 //Create a string variable to hold the sql query to delete data
-                String sql = "DELETE FROM tb_users WHERE user_id=@user_id";
+                String sql = "DELETE FROM tbl_users WHERE user_id=@user_id";
 
                 //Create Sql Command to Execute the Query
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 //Pass the value thorugh parameters
                 cmd.Parameters.AddWithValue("@user_id", u.user_id);
+
+                //Open the DAtabase Connection
+                conn.Open();
 
                 //Create an integer variable to hold the value after query is executed
                 int rows = cmd.ExecuteNonQuery();
