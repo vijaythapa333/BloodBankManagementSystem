@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +78,12 @@ namespace BloodBankManagementSystem.UI
             txtAddress.Text = "";
             txtPassword.Text = "";
             txtUserID.Text = "";
+            //Path to Destination Folder
+            //Get the Image path
+            string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
+            string imagePath = paths + "\\images\\no-image.jpg";
+            //Diplay in Picture Box
+            pictureBoxProfilePicture.Image = new Bitmap(imagePath);
         }
 
         private void dgvUsers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -90,7 +97,26 @@ namespace BloodBankManagementSystem.UI
             txtFullName.Text = dgvUsers.Rows[RowIndex].Cells[4].Value.ToString();
             txtContact.Text = dgvUsers.Rows[RowIndex].Cells[5].Value.ToString();
             txtAddress.Text = dgvUsers.Rows[RowIndex].Cells[6].Value.ToString();
-            imageName = dgvUsers.Rows[RowIndex].Cells[7].Value.ToString();
+            imageName = dgvUsers.Rows[RowIndex].Cells[8].Value.ToString();
+
+            //Display the Image of SElected User
+            //Get the Image path
+            string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
+
+            if(imageName != "no-image.jpg")
+            {
+                //Path to Destination Folder
+                string imagePath = paths + "\\images\\" + imageName;
+                //Diplay in Picture Box
+                pictureBoxProfilePicture.Image = new Bitmap(imagePath);
+            }
+            else
+            {
+                //Path to Destination Folder
+                string imagePath = paths + "\\images\\no-image.jpg";
+                //Diplay in Picture Box
+                pictureBoxProfilePicture.Image = new Bitmap(imagePath);
+            }
         }
 
         private void frmUsers_Load(object sender, EventArgs e)
@@ -158,6 +184,52 @@ namespace BloodBankManagementSystem.UI
         {
             //Call the user Function
             Clear();
+        }
+
+        private void btnSelectImage_Click(object sender, EventArgs e)
+        {
+            //Write the Code to Upload the Image of User
+            //Open Dialog Box t Select Image
+            OpenFileDialog open = new OpenFileDialog();
+
+            //Filter the File Type, Only Allow Image File Types
+            open.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.PNG; *.gif;)|*.jpg; *.jpeg; *.png; *.PNG; *.gif;";
+
+            //Check if the file is selected or Not
+            if(open.ShowDialog()==DialogResult.OK)
+            {
+                //Check if the file exists or not
+                if(open.CheckFileExists)
+                {
+                    //DIsplay the Selected File on Picture Box
+                    pictureBoxProfilePicture.Image = new Bitmap(open.FileName);
+
+                    //Rename the Image we selected
+                    //1. Get the Extension of Image
+                    string ext = Path.GetExtension(open.FileName);
+
+                    //2. Generate Random Integer
+                    Random random = new Random();
+                    int RandInt = random.Next(0, 1000);
+
+                    //3. REname the Image
+                    imageName = "Blood_Bank_MS_" + RandInt + ext;
+
+                    //4. Get the path of SElected Image
+                    string sourcePath = open.FileName;
+
+                    //5. Get the Path of Destination
+                    string paths = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10);
+                    //Paths to Destination Folder
+                    string destinationPath = paths + "\\images\\" + imageName;
+
+                    //6. Copy image to the Destination Folder
+                    File.Copy(sourcePath, destinationPath);
+
+                    //7. Display Message
+                    MessageBox.Show("Image Successfully Uploaded.");
+                }
+            }
         }
     }
 }

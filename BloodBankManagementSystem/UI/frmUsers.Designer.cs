@@ -123,6 +123,7 @@
             this.btnSelectImage.TabIndex = 3;
             this.btnSelectImage.Text = "Select Image";
             this.btnSelectImage.UseVisualStyleBackColor = true;
+            this.btnSelectImage.Click += new System.EventHandler(this.btnSelectImage_Click);
             // 
             // lblFullName
             // 
