@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="BLL\userBLL.cs" />
     <Compile Include="DAL\userDAL.cs" />
+    <Compile Include="UI\frmDonors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmDonors.Designer.cs">
+      <DependentUpon>frmDonors.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="UI\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\frmDonors.resx">
+      <DependentUpon>frmDonors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
     </EmbeddedResource>

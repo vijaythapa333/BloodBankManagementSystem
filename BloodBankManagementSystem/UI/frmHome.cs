@@ -30,5 +30,12 @@ namespace BloodBankManagementSystem
             frmUsers users = new frmUsers();
             users.Show();
         }
+
+        private void donorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Open Manage Donors Form
+            frmDonors donors = new frmDonors();
+            donors.Show();
+        }
     }
 }
