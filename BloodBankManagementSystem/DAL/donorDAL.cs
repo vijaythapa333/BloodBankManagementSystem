@@ -227,5 +227,49 @@ namespace BloodBankManagementSystem.DAL
             return isSuccess;
         }
         #endregion
+
+        #region Count Donors for Specific Blood Group
+        public string countDonors(string blood_group)
+        {
+            //Create SQL Connection for Database Connection
+            SqlConnection conn = new SqlConnection(myconnstrng);
+
+            //Create astring variable for donor count and set its default value to 0
+            string donors = "0";
+
+            try
+            {
+                //SQL Query to Count donors for Specific Blood Group
+                string sql = "SELECT * FROM tbl_donors WHERE blood_group = '"+ blood_group +"'";
+
+                //Sql Command to Execute Query
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                //Sql Data Adapter to Get the data from DAtabase
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                //Databale to Hold the DAta Temporarily
+                DataTable dt = new DataTable();
+
+                //Pass tehe value from SqlDataAdapter to DataTable
+                adapter.Fill(dt);
+
+                //Get the Total Number of Donors Based on Blood Group
+                donors = dt.Rows.Count.ToString();
+            }
+            catch(Exception ex)
+            {
+                //Display error message if there's any
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Close Database Connection
+                conn.Close();
+            }
+
+            return donors;
+        }
+        #endregion
     }
 }
