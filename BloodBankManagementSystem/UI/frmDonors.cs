@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,7 +130,8 @@ namespace BloodBankManagementSystem.UI
             //Get the image path
             string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length) - 10);
             string imagePath = paths + "\\images\\" + imageName;
-
+            //Display the Image of SElected User
+            pictureBoxProfilePicture.Image = new Bitmap(imagePath);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -199,6 +201,54 @@ namespace BloodBankManagementSystem.UI
         {
             //Clear the TExtboxes
             Clear();
+        }
+
+        private void btnSelectImage_Click(object sender, EventArgs e)
+        {
+            //Code to Select Image and Upload
+            //1. Open the Dialog Box to SElect Image
+            OpenFileDialog open = new OpenFileDialog();
+
+            //2. FIlter the File Type (allow only image files)
+            open.Filter = "Image Files Only (*.jpg; *.jpeg; *.png; *.gif| *.jpg; *.jpeg; *.png; *.gif)";
+
+            //3. Check whether the image is selected or not
+            if(open.ShowDialog()==DialogResult.OK)
+            {
+                //Check if the file exists or not
+                if(open.CheckFileExists)
+                {
+                    //Display the Selected Image in PictureBox
+                    pictureBoxProfilePicture.Image = new Bitmap(open.FileName);
+
+                    //Rename the selected image 
+                    //1. Get the Extension of SElected Image
+                    string ext = Path.GetExtension(open.FileName);
+
+                    string name = Path.GetFileNameWithoutExtension(open.FileName);
+
+                    //Generate Random but Globally Unique Identifier
+                    Guid g = new Guid();
+                    g = Guid.NewGuid();
+
+                    //Finally REname our Image
+                    imageName = "Blood_Bank_MS_"+ name + g + ext;
+
+                    //Get the Source Path (Path of Image)
+                    string sourcePath = open.FileName;
+
+                    //Get the Destination Path
+                    string paths = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10);
+                    //Path to Desitnation 
+                    string destinationPath = paths + "\\images\\" + imageName;
+
+                    //Upload the Image to Destination Folder
+                    File.Copy(sourcePath, destinationPath);
+
+                    //Display Message after the image is uploaded successfully
+                    MessageBox.Show("Image successfully uploaded.");
+                }
+            }
         }
     }
 }

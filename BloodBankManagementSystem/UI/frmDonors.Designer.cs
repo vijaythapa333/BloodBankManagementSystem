@@ -300,6 +300,7 @@
             this.btnSelectImage.TabIndex = 27;
             this.btnSelectImage.Text = "Select Image";
             this.btnSelectImage.UseVisualStyleBackColor = true;
+            this.btnSelectImage.Click += new System.EventHandler(this.btnSelectImage_Click);
             // 
             // pictureBoxProfilePicture
             // 
