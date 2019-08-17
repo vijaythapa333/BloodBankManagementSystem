@@ -250,5 +250,27 @@ namespace BloodBankManagementSystem.UI
                 }
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            //Let's Add the Dunctionality to Search the Donors
+
+            //1. Get the Keywords Typed on the Search TExt Box
+            string keywords = txtSearch.Text;
+
+            // Check Whether the Search TExtBox is Empty or Not
+            if(keywords != null)
+            {
+                //Display the information of Donors Based on Keywords
+                DataTable dt = dal.Search(keywords);
+                dgvDonors.DataSource = dt;
+            }
+            else
+            {
+                //DIsplay all the Donors
+                DataTable dt = dal.Select();
+                dgvDonors.DataSource = dt;
+            }
+        }
     }
 }
