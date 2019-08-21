@@ -72,6 +72,8 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.pictureBoxClose = new System.Windows.Forms.PictureBox();
+            this.lblUserTitle = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.menuStripTop.SuspendLayout();
             this.panelFooter.SuspendLayout();
             this.panelOpositive.SuspendLayout();
@@ -541,12 +543,34 @@
             this.pictureBoxClose.TabStop = false;
             this.pictureBoxClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
+            // lblUserTitle
+            // 
+            this.lblUserTitle.AutoSize = true;
+            this.lblUserTitle.Location = new System.Drawing.Point(14, 51);
+            this.lblUserTitle.Name = "lblUserTitle";
+            this.lblUserTitle.Size = new System.Drawing.Size(76, 13);
+            this.lblUserTitle.TabIndex = 14;
+            this.lblUserTitle.Text = "Logged In As: ";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lblUser.Location = new System.Drawing.Point(96, 51);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(11, 13);
+            this.lblUser.TabIndex = 15;
+            this.lblUser.Text = ".";
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(1135, 610);
+            this.Controls.Add(this.lblUser);
+            this.Controls.Add(this.lblUserTitle);
             this.Controls.Add(this.pictureBoxClose);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblSearch);
@@ -640,6 +664,8 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.PictureBox pictureBoxClose;
+        private System.Windows.Forms.Label lblUserTitle;
+        private System.Windows.Forms.Label lblUser;
     }
 }
 

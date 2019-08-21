@@ -279,5 +279,51 @@ namespace BloodBankManagementSystem.DAL
             return dt;
         }
         #endregion
+
+
+        #region
+        public userBLL GetIDFromUsername(string username)
+        {
+            userBLL u = new userBLL();
+
+            //Create SQL Connecction to Connect Database
+            SqlConnection conn = new SqlConnection(myconnstrng);
+
+            //DataTable to hold the data from database temporarily
+            DataTable dt = new DataTable();
+
+            try
+            {
+                //SQL Query to get the ID from USERNAME
+                string sql = "SELECT user_id FROM tbl_users WHERE username='"+ username +"'";
+
+                //Create SQL Data Adapter
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                //Open Database Connection
+                conn.Open();
+
+                //Fill the data in dataTable from Adapter
+                adapter.Fill(dt);
+
+                //If there's user based on the username then get the user_id
+                if(dt.Rows.Count>0)
+                {
+                    u.user_id = int.Parse(dt.Rows[0]["user_id"].ToString());
+                }
+            }
+            catch(Exception ex)
+            {
+                //Display Error Message if there's any exceptional errors
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Close Database Connection
+                conn.Close();
+            }
+
+            return u;
+        }
+        #endregion
     }
 }
