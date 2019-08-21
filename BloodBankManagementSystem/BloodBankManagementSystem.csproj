@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\donorBLL.cs" />
+    <Compile Include="BLL\loginBLL.cs" />
     <Compile Include="BLL\userBLL.cs" />
     <Compile Include="DAL\donorDAL.cs" />
+    <Compile Include="DAL\loginDAL.cs" />
     <Compile Include="DAL\userDAL.cs" />
     <Compile Include="UI\frmDonors.cs">
       <SubType>Form</SubType>

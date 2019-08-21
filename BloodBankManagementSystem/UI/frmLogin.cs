@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BloodBankManagementSystem.BLL;
+using BloodBankManagementSystem.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +19,44 @@ namespace BloodBankManagementSystem.UI
             InitializeComponent();
         }
 
+        //Create the Object of BLL and DAL
+        loginBLL l = new loginBLL();
+        loginDAL dal = new loginDAL();
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //Write the Code to Cose the Application
             this.Close();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //Write the Code to Login our Application
+            //1. Get the username and password from login form
+            l.username = txtUsername.Text;
+            l.password = txtPassword.Text;
+
+            //Check the Login Credentials
+            bool isSuccess = dal.loginCheck(l);
+
+            //Check whehter the login is success or not
+            //If login is success then isSuccess will be true else it will be false
+            if(isSuccess==true)
+            {
+                //Login Success
+                //Display Success Message
+                MessageBox.Show("Login Successful.");
+                //Display home Form
+                frmHome home = new frmHome();
+                home.Show();
+                this.Hide(); //To CLose Login Form
+            }
+            else
+            {
+                //Login Failed
+                //Display the Error Message
+                MessageBox.Show("Login Failed. Try Again.");
+            }
         }
     }
 }
