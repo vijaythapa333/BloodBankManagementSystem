@@ -27,6 +27,8 @@ namespace BloodBankManagementSystem.UI
         //Global Variable for Image
         string imageName = "no-image.jpg";
 
+        string rowHeaderImage;
+
         private void frmDonors_Load(object sender, EventArgs e)
         {
             //Display Donors in DataGrid View
@@ -68,6 +70,8 @@ namespace BloodBankManagementSystem.UI
             d.added_by = usr.user_id; 
 
             d.image_name = imageName;
+
+            
 
             //Step2: Inserting Data into Database
             //Create a Boolean Variable to Isnert DAta into DAtabase and check whether the data inserted successfully of not
@@ -133,6 +137,10 @@ namespace BloodBankManagementSystem.UI
             cmbBloodGroup.Text = dgvDonors.Rows[RowIndex].Cells[7].Value.ToString();
 
             imageName = dgvDonors.Rows[RowIndex].Cells[9].Value.ToString();
+
+            //Update the VAlue of rowHeaderImage
+            rowHeaderImage = imageName;
+
             //Display The image of Selected Donor
             //Get the image path
             string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length) - 10);
@@ -186,6 +194,27 @@ namespace BloodBankManagementSystem.UI
         {
             //Get the value from form
             d.donor_id = int.Parse(txtDonorID.Text);
+
+            //Check whether the donor has profile picture or not
+            if(rowHeaderImage != "no-name.jpg")
+            {
+                //Only runs if user has image
+                //Get the Path to the root folder of the project
+                string path = Application.StartupPath.Substring(0, (Application.StartupPath.Length) - 10);
+
+                //Get the Path of the image
+                string imagePath = path + "\\images\\" + rowHeaderImage;
+
+                //Call Clear Function
+                Clear();
+
+                //Call GArbage Collection
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                //Delete the Physical image file of Donors
+                File.Delete(imagePath);
+            }
 
             //Create a Boolean Variable to Check whether the donor deleted or not
             bool isSuccess = dal.Delete(d);

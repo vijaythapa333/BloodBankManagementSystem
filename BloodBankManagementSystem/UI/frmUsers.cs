@@ -26,6 +26,9 @@ namespace BloodBankManagementSystem.UI
 
         string imageName = "no-image.jpg";
 
+        //Global Variabel for the image to delete
+        string rowHeaderImage;
+
         private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             //Add functionality to close this form
@@ -99,6 +102,9 @@ namespace BloodBankManagementSystem.UI
             txtAddress.Text = dgvUsers.Rows[RowIndex].Cells[6].Value.ToString();
             imageName = dgvUsers.Rows[RowIndex].Cells[8].Value.ToString();
 
+            //Update the Value of Global Variable rowHeaderImage
+            rowHeaderImage = imageName;
+
             //Display the Image of SElected User
             //Get the Image path
             string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
@@ -161,6 +167,26 @@ namespace BloodBankManagementSystem.UI
         {
             //Step 1: Get the UserID from Text Box to Delete the User
             u.user_id = int.Parse(txtUserID.Text);
+
+            //REmove the Physical file of the User Profile
+
+            if(rowHeaderImage != "no-image.jpg")
+            {
+                //Path of the Project Folder
+                string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
+                //Give the Path to the Image Folder
+                string imagePath = paths + "\\images\\" + rowHeaderImage;
+
+                //Call Clear Function to clear all the textboxes and Picturebox
+                Clear();
+
+                //Call Garbage  Collection Function
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                //Delete hte Physical File of the User Profile
+                File.Delete(imagePath);
+            }
 
             //Step Create the Boolean value to check whether the user deleted or not
             bool success = dal.Delete(u);

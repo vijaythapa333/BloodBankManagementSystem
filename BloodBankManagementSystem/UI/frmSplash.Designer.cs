@@ -83,7 +83,7 @@
             this.panelMovable.BackColor = System.Drawing.SystemColors.Highlight;
             this.panelMovable.Location = new System.Drawing.Point(8, 7);
             this.panelMovable.Name = "panelMovable";
-            this.panelMovable.Size = new System.Drawing.Size(25, 25);
+            this.panelMovable.Size = new System.Drawing.Size(10, 25);
             this.panelMovable.TabIndex = 0;
             // 
             // timerSplash
