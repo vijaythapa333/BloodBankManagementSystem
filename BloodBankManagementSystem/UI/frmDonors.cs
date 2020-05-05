@@ -26,6 +26,8 @@ namespace BloodBankManagementSystem.UI
 
         //Global Variable for Image
         string imageName = "no-image.jpg";
+        string sourcePath = "";
+        string destinationPath = "";
 
         string rowHeaderImage;
 
@@ -71,7 +73,13 @@ namespace BloodBankManagementSystem.UI
 
             d.image_name = imageName;
 
-            
+            //Upload image
+            //Check whether the user has selected the image or not
+            if(imageName != "no-image.jpg")
+            {
+                //Upload the image
+                File.Copy(sourcePath, destinationPath);
+            }
 
             //Step2: Inserting Data into Database
             //Create a Boolean Variable to Isnert DAta into DAtabase and check whether the data inserted successfully of not
@@ -109,6 +117,7 @@ namespace BloodBankManagementSystem.UI
             cmbBloodGroup.Text = "";
             txtContact.Text = "";
             txtAddress.Text = "";
+            imageName = "no-image.jpg";
 
             //Clear the PictureBox
             //First we need to get the image Path
@@ -168,11 +177,41 @@ namespace BloodBankManagementSystem.UI
             d.added_by = usr.user_id;
             d.image_name = imageName;
 
+            // Upload new image
+            //Check whether the user has selected the image or not
+            if (imageName != "no-image.jpg")
+            {
+                //Upload the image
+                File.Copy(sourcePath, destinationPath);
+            }
+
             //Create a Boolean Variable to Check whether the data updated successfully or not
             bool isSuccess = dal.Update(d);
 
+            //REmove the previous image
+            //Check whether the donor has profile picture or not
+            if (rowHeaderImage != "no-name.jpg")
+            {
+                //Only runs if user has image
+                //Get the Path to the root folder of the project
+                string path = Application.StartupPath.Substring(0, (Application.StartupPath.Length) - 10);
+
+                //Get the Path of the image
+                string imagePath = path + "\\images\\" + rowHeaderImage;
+
+                //Call Clear Function
+                Clear();
+
+                //Call GArbage Collection
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                //Delete the Physical image file of Donors
+                File.Delete(imagePath);
+            }
+
             //If the data updated successfully then the value of isSuccess will be true else it will be false
-            if(isSuccess == true)
+            if (isSuccess == true)
             {
                 //Donor Updated Successfully
                 MessageBox.Show("Donor updated Successfully.");
@@ -275,18 +314,18 @@ namespace BloodBankManagementSystem.UI
                     imageName = "Blood_Bank_MS_"+ name + g + ext;
 
                     //Get the Source Path (Path of Image)
-                    string sourcePath = open.FileName;
+                    sourcePath = open.FileName;
 
                     //Get the Destination Path
                     string paths = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10);
                     //Path to Desitnation 
-                    string destinationPath = paths + "\\images\\" + imageName;
+                    destinationPath = paths + "\\images\\" + imageName;
 
                     //Upload the Image to Destination Folder
-                    File.Copy(sourcePath, destinationPath);
+                    //File.Copy(sourcePath, destinationPath);
 
                     //Display Message after the image is uploaded successfully
-                    MessageBox.Show("Image successfully uploaded.");
+                    //MessageBox.Show("Image successfully uploaded.");
                 }
             }
         }

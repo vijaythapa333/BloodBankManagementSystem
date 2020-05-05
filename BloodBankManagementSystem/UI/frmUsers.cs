@@ -25,6 +25,8 @@ namespace BloodBankManagementSystem.UI
         userDAL dal = new userDAL();
 
         string imageName = "no-image.jpg";
+        string sourcePath = "";
+        string destinationPath = "";
 
         //Global Variabel for the image to delete
         string rowHeaderImage;
@@ -46,6 +48,14 @@ namespace BloodBankManagementSystem.UI
             u.address = txtAddress.Text;
             u.added_date = DateTime.Now;
             u.image_name = imageName;
+
+            //Upload the image if it is selected
+            //check whether the user has selected the image or not
+            if(imageName != "no-image.jpg")
+            {
+                //User has selected the image
+                File.Copy(sourcePath, destinationPath);
+            }
 
             //Step2: Adding the Values from UI to the Database
             //Create a Boolean Variable to check whether the data is inserted successfully or not
@@ -145,11 +155,40 @@ namespace BloodBankManagementSystem.UI
             u.added_date = DateTime.Now;
             u.image_name = imageName;
 
+
+            //Upload New Image
+            //check whether the user has selected the image or not
+            if (imageName != "no-image.jpg")
+            {
+                //User has selected the image
+                File.Copy(sourcePath, destinationPath);
+            }
+
             //Step 2: Create a Boolean variable to check whether the data is updated successfully or not
             bool success = dal.Update(u);
 
+            //Remove the previous Image
+            if (rowHeaderImage != "no-image.jpg")
+            {
+                //Path of the Project Folder
+                string paths = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
+                //Give the Path to the Image Folder
+                string imagePath = paths + "\\images\\" + rowHeaderImage;
+
+                //Call Clear Function to clear all the textboxes and Picturebox
+                Clear();
+
+                //Call Garbage  Collection Function
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                //Delete hte Physical File of the User Profile
+                File.Delete(imagePath);
+            }
+
+
             //Let's check whether the data is updated or not
-            if(success==true)
+            if (success==true)
             {
                 //Data Udated Successfully
                 MessageBox.Show("User Updated Successfully.");
@@ -242,18 +281,18 @@ namespace BloodBankManagementSystem.UI
                     imageName = "Blood_Bank_MS_" + RandInt + ext;
 
                     //4. Get the path of SElected Image
-                    string sourcePath = open.FileName;
+                    sourcePath = open.FileName;
 
                     //5. Get the Path of Destination
                     string paths = Application.StartupPath.Substring(0, Application.StartupPath.Length - 10);
                     //Paths to Destination Folder
-                    string destinationPath = paths + "\\images\\" + imageName;
+                    destinationPath = paths + "\\images\\" + imageName;
 
                     //6. Copy image to the Destination Folder
-                    File.Copy(sourcePath, destinationPath);
+                    //File.Copy(sourcePath, destinationPath);
 
                     //7. Display Message
-                    MessageBox.Show("Image Successfully Uploaded.");
+                    //MessageBox.Show("Image Successfully Uploaded.");
                 }
             }
         }
