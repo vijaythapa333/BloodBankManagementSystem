@@ -18,6 +18,16 @@ Blood Bank Management System, App that manages the detail of the donor in Blood 
 3. Manage Donors (Add, Update, Search, Delete)
 4. Dashboard to view Donors by Blood Group
 
+
+## Donate
+
+**[PayPal](https://bit.ly/support-vijay-thapa)**
+
+**[Buy me a Coffee  ☕️](https://www.buymeacoffee.com/vijaythapa)**
+
+**Donate by wire transfer:** E-Mail at *donate@vijaythapa.com* for wire transfer details. 
+
+
 ## Instructions to Use
 1. Download or Clone this project
 2. Extract and Restore Database
@@ -33,9 +43,6 @@ Note: comment on YouTube if you got any problems or email: hi@vijaythapa.com
 1. Subscribe & Share my YouTube Channel - https://bit.ly/vijay-thapa-online-courses
 2. Add a Star 🌟  to this 👆 Repository
 
-## Donate
-
-**Donate by wire transfer:** contact *donate@vijaythapa.com* for wire transfer details. 
 
 
 
