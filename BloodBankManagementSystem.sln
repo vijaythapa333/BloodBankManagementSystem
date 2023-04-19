@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankManagementSystem", "BloodBankManagementSystem\BloodBankManagementSystem.csproj", "{2FE60A57-2DD6-46EA-B468-6603CF9A788A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankManagementSystem.Tests", "BloodBankManagementSystem.Tests\BloodBankManagementSystem.Tests.csproj", "{A791F5C0-2B45-43B4-8C9C-1007A8693C12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2FE60A57-2DD6-46EA-B468-6603CF9A788A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FE60A57-2DD6-46EA-B468-6603CF9A788A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FE60A57-2DD6-46EA-B468-6603CF9A788A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A791F5C0-2B45-43B4-8C9C-1007A8693C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A791F5C0-2B45-43B4-8C9C-1007A8693C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A791F5C0-2B45-43B4-8C9C-1007A8693C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A791F5C0-2B45-43B4-8C9C-1007A8693C12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

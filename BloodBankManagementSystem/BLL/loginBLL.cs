@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BloodBankManagementSystem.BLL
 {
-    class loginBLL
+    public class loginBLL
     {
         public string username { get; set; }
         public string password { get; set; }

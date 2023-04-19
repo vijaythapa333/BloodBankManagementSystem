@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BloodBankManagementSystem.BLL
 {
-    class userBLL
+    public class userBLL
     {
         public int user_id { get; set; }
         public string username { get; set; }
